@@ -111,7 +111,7 @@ const REPO_OVERRIDES = {
 "css-post2025-examples": { img: "imgs/css-post2025-examples.png", category: "beginner" },
 "pokedex": { img: "imgs/pokedex.png", category: "web" },
 "porshe": { img: "imgs/porshe.png", category: "web" },
-"Frontend-Master": { img: "imgs/frontend-master.png", category: "beginner" },
+"Frontend-Master": { img: "imgs/Frontend-Master.png", category: "beginner" },
 "Yashhh710": { img: "imgs/yashhh710.png", category: "other" },
 "axon-ev-project": { img: "imgs/axon-ev-project.png", category: ["web","projects"] },
 "tic-tac-toe-html-css": { img: "imgs/tic-tac-toe-html-css.png", category: "web" },
