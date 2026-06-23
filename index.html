@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash's Projects</title>
+<link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=WviCf6nCaHc6&format=png&color=000000">
+<meta name="keywords" content="Yash, Yash Tambade, Yash T, Yash Developer, Yash Portfolio, Yash Projects, Yash GitHub, Yash Web Developer, Yash Full Stack Developer, Yash Frontend Developer, Yash UI UX Designer, Yash React Developer, Yash Next.js Developer, Yash JavaScript Developer, Yash Software Developer, Yash Programmer, Yash Coding Projects, Yash Personal Portfolio, Yash Project Showcase, Yash Creative Developer, Yash Developer Portfolio, Yash Tambade Portfolio, Yash Tambade Projects, Yash Tambade GitHub, Yash Tambade Developer, Yash Tambade Web Developer, Yash Tambade Software Engineer, Yash Tambade Coding Portfolio, Yash Tambade Project Showcase, Yash Tambade React Developer, Yash Tambade Next.js Developer, Yash Tambade Frontend Developer, Yash Tambade Full Stack Developer, Yash's Projects, Yash's Portfolio, Yash's GitHub, Yash's Development Projects, Yash's Coding Journey, Yash's Web Development Portfolio, Yash's Software Projects">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="Data.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-main:    #121212;
+  --bg-side:    #1a1a1a;
+  --bg-card:    #1e1e1e;
+  --bg-hover:   #252525;
+  --bg-head:    #0f0f0f;
+  --accent:     #e4000f;
+  --accent2:    #ff1a28;
+  --tp:         #ffffff;
+  --ts:         #a0a0a0;
+  --tm:         #555555;
+  --border:     #2a2a2a;
+  --sw:         200px;
+  --rw:         220px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-main);
+  color: var(--tp);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* HEADER */
+header {
+  background: var(--bg-head);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 52px;
+  gap: 16px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.logo {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  font-style: italic;
+  width: 36px; height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: default;
+  letter-spacing: .5px;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  background: #2a2a2a;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0 12px;
+  gap: 8px;
+  height: 34px;
+}
+.search-bar input {
+  background: none; border: none; outline: none;
+  color: var(--tp); font-family: 'Inter',sans-serif; font-size: 13px; width: 100%;
+}
+.search-bar input::placeholder { color: var(--tm); }
+
+.header-right { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+
+.icon-btn {
+  width: 34px; height: 34px;
+  border-radius: 4px; border: none;
+  background: transparent; color: var(--ts);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: background .15s, color .15s; text-decoration: none;
+}
+.icon-btn:hover { background: #2a2a2a; color: #fff; }
+
+/* LAYOUT */
+.layout { display: flex; flex: 1; overflow: hidden; }
+
+/* SIDEBAR */
+aside {
+  width: var(--sw);
+  background: var(--bg-side);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  flex-shrink: 0; overflow-y: auto;
+}
+aside::-webkit-scrollbar { width: 4px; }
+aside::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.sec-lbl {
+  font-size: 10px; font-weight: 600;
+  color: var(--tm); letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 16px 16px 6px;
+}
+
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 16px;
+  color: var(--ts); font-size: 13px;
+  cursor: pointer; border-left: 3px solid transparent;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.nav-item:hover { background: #222; color: #fff; }
+.nav-item.active { background: #222; color: #fff; border-left-color: var(--accent); }
+.nav-icon { font-size: 15px; width: 18px; text-align: center; }
+
+.divider { height: 1px; background: var(--border); margin: 8px 0; }
+
+.pinned-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 16px; cursor: pointer;
+  transition: background .15s;
+}
+.pinned-item:hover { background: #222; }
+
+.pinned-thumb {
+  width: 36px; height: 22px;
+  border-radius: 3px; flex-shrink: 0;
+  overflow: hidden; display: flex;
+  align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #fff;
+}
+.pinned-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pinned-name { font-size: 12px; color: var(--ts); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.user-bar {
+  margin-top: auto; border-top: 1px solid var(--border);
+  padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+}
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg,#e4000f,#7b0007);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; flex-shrink: 0; overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.username { font-size: 13px; font-weight: 500; }
+
+/* MAIN */
+main { flex: 1; overflow-y: auto; overflow-x: hidden; }
+main::-webkit-scrollbar { width: 6px; }
+main::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* HERO */
+.hero { position: relative; height: 300px; overflow: hidden; flex-shrink: 0; }
+
+.hero-bg {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg,#1a0a0a 0%,#2d0808 30%,#1a1a2e 100%);
+  display: flex; align-items: flex-end;
+  transition: background .6s;
+}
+
+.hero-img-area {
+  position: absolute; right: 0; top: 0;
+  width: 55%; height: 100%; overflow: hidden;
+}
+.hero-img-area img { width: 100%; height: 100%; object-fit: cover; opacity: .45; }
+.hero-img-area .hero-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px; opacity: .08;
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,#121212 0%,#121212bb 44%,transparent 100%);
+}
+
+.hero-content {
+  position: absolute; bottom: 0; left: 0;
+  padding: 22px 28px; max-width: 54%;
+}
+.hero-tag {
+  font-size: 11px; font-weight: 600;
+  color: var(--accent); letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.hero-title { font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 6px; }
+.hero-desc {
+  font-size: 12px; color: var(--ts); line-height: 1.6; margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.hero-meta { font-size: 11px; color: var(--tm); margin-bottom: 12px; display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-meta span { display: flex; align-items: center; gap: 4px; }
+.hero-actions { display: flex; gap: 8px; }
+
+.btn-red {
+  background: var(--accent); color: #fff; border: none; border-radius: 4px;
+  padding: 7px 16px; font-size: 12px; font-weight: 600;
+  font-family: 'Inter',sans-serif; cursor: pointer; transition: background .15s;
+}
+.btn-red:hover { background: var(--accent2); }
+
+.btn-ghost {
+  background: transparent; color: var(--ts); border: 1px solid #444; border-radius: 4px;
+  padding: 7px 16px; font-size: 12px; font-weight: 500;
+  font-family: 'Inter',sans-serif; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+}
+.btn-ghost:hover { border-color: #666; color: #fff; }
+
+.hero-dots { position: absolute; bottom: 10px; right: 16px; display: flex; gap: 5px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: #444; cursor: pointer; transition: background .2s; }
+.dot.active { background: #fff; }
+
+/* CONTENT */
+.content-area { padding: 0 20px 32px; }
+.section-header { display: flex; align-items: center; justify-content: space-between; margin: 20px 0 11px; }
+.section-title { font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .8px; }
+.sort-lbl { font-size: 11px; color: var(--tm); }
+
+/* LOADING */
+.loading-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 60px 20px; gap: 12px;
+}
+.spinner {
+  width: 32px; height: 32px; border: 3px solid #2a2a2a;
+  border-top-color: var(--accent); border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-txt { font-size: 13px; color: var(--tm); }
+
+/* CARDS — landscape 16:9 */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 12px;
+}
+
+.project-card {
+  background: var(--bg-card); border-radius: 6px; overflow: hidden;
+  cursor: pointer; border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transition: transform .2s, border-color .15s, background .15s;
+  will-change: transform;
+}
+.project-card:hover { transform: translate3d(0,-3px,0); background: var(--bg-hover); border-color: #3a3a3a; }
+
+.card-thumb {
+  width: 100%; padding-top: 56.25%;
+  position: relative; overflow: hidden;
+  flex-shrink: 0;
+  transform: translateZ(0);
+}
+.card-thumb img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-thumb-ph {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 800; color: rgba(255,255,255,.12);
+  letter-spacing: -2px;
+}
+.card-thumb::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to top,rgba(0,0,0,.5),transparent);
+  pointer-events: none;
+}
+
+.lang-dot {
+  position: absolute; bottom: 8px; right: 8px;
+  font-size: 10px; font-weight: 600; color: #fff;
+  background: rgba(0,0,0,.55); padding: 2px 7px; border-radius: 10px;
+  z-index: 1;
+  display: flex; align-items: center; gap: 4px;
+}
+.lang-dot-circle {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+
+.card-account {
+  position: absolute; top: 7px; right: 7px;
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,.7);
+  background: rgba(0,0,0,.55); padding: 2px 6px; border-radius: 10px;
+  z-index: 1;
+}
+
+.card-body { padding: 9px 11px 5px; flex: 1; }
+.card-cat { font-size: 9px; font-weight: 600; color: var(--tm); letter-spacing: .8px; text-transform: uppercase; margin-bottom: 3px; }
+.card-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-desc { font-size: 11px; color: var(--ts); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 32px; }
+
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 11px; border-top: 1px solid var(--border);
+  gap: 8px;
+}
+.card-date { font-size: 10px; color: var(--tm); white-space: nowrap; }
+.card-link { font-size: 11px; color: #4a9eff; white-space: nowrap; }
+
+/* SKILLS */
+.skill-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.skill-label { font-size: 12px; color: var(--ts); width: 80px; flex-shrink: 0; }
+.skill-bar-bg { flex: 1; height: 4px; background: #2a2a2a; border-radius: 2px; overflow: hidden; }
+.skill-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; }
+.skill-pct { font-size: 11px; color: var(--tm); width: 30px; text-align: right; flex-shrink: 0; }
+
+/* RIGHT PANEL */
+.right-panel {
+  width: var(--rw);
+  background: var(--bg-side);
+  border-left: 1px solid var(--border);
+  flex-shrink: 0; overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.right-panel::-webkit-scrollbar { width: 4px; }
+.right-panel::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+.social-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px; cursor: pointer;
+  text-decoration: none; transition: background .15s;
+}
+.social-link:hover { background: #222; }
+
+.social-icon {
+  width: 30px; height: 30px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; color: #fff;
+}
+.social-info { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
+.social-name { font-size: 12px; font-weight: 600; color: #fff; }
+.social-handle { font-size: 10px; color: var(--tm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.stat-row {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--tm); margin-bottom: 6px;
+}
+.stat-val { color: #fff; font-weight: 600; }
+
+.hire-btn {
+  margin: 10px 14px 14px;
+  background: var(--accent); border: none; border-radius: 4px;
+  color: #fff; font-size: 12px; font-weight: 600;
+  font-family: 'Inter',sans-serif; padding: 8px 12px;
+  cursor: pointer; width: calc(100% - 28px);
+  transition: background .15s;
+}
+.hire-btn:hover { background: var(--accent2); }
+
+/* MODAL */
+.modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.85); z-index: 100;
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: #1e1e1e; border: 1px solid #333;
+  border-radius: 10px; width: 580px;
+  max-width: 94vw; max-height: 90vh;
+  overflow-y: auto; position: relative;
+}
+
+.modal-hero {
+  width: 100%; aspect-ratio: 16/9;
+  border-radius: 10px 10px 0 0;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-hero img { width: 100%; height: 100%; object-fit: cover; }
+.modal-hero-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 64px; font-weight: 800; opacity: .15; }
+
+.modal-close {
+  position: absolute; top: 10px; right: 10px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0,0,0,.65); border: none; color: #fff;
+  font-size: 14px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; z-index: 2;
+}
+
+.modal-body { padding: 18px 22px 22px; }
+.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.modal-meta { font-size: 11px; color: var(--tm); margin-bottom: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+.modal-meta span { display: flex; align-items: center; gap: 4px; }
+.modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.tag { font-size: 11px; background: #2a2a2a; border: 1px solid #3a3a3a; color: var(--ts); padding: 3px 9px; border-radius: 3px; }
+.modal-desc { font-size: 13px; color: var(--ts); line-height: 1.7; margin-bottom: 18px; }
+.modal-actions { display: flex; gap: 10px; }
+
+.btn-outline {
+  background: transparent; border: 1px solid #444; border-radius: 4px;
+  color: var(--ts); font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 500;
+  padding: 8px 16px; cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+}
+.btn-outline:hover { border-color: #666; color: #fff; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: #2a2a2a; border: 1px solid #3a3a3a;
+  border-radius: 6px; padding: 10px 14px;
+  font-size: 13px; color: #fff; z-index: 200;
+  transform: translateY(70px); opacity: 0;
+  transition: transform .3s, opacity .3s; pointer-events: none; max-width: 280px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #444;
+}
+
+.section-divider span {
+  padding: 0 20px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+</style>
+<style>
+/* Startup loader styles */
+#startup-loader {
+  position: fixed; inset: 0; background-color: #090909;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999; transition: opacity .45s ease;
+}
+#startup-loader.hidden { opacity: 0; pointer-events: none; }
+#startup-loader .loader { display: flex; gap: 0.5em; align-items: center; }
+#startup-loader .absolute { position: absolute; }
+#startup-loader .inline-block { display: inline-block; }
+#startup-loader .dash { animation: dashArray 2s ease-in-out infinite, dashOffset 2s linear infinite; }
+@keyframes dashArray {
+  0% { stroke-dasharray: 0 1 359 0; }
+  50% { stroke-dasharray: 0 359 1 0; }
+  100% { stroke-dasharray: 359 1 0 0; }
+}
+@keyframes dashOffset {
+  0% { stroke-dashoffset: 365; }
+  100% { stroke-dashoffset: 5; }
+}
+</style>
+</head>
+<body>
+
+<!-- Startup Loader (shows on index.html startup) -->
+<div id="startup-loader">
+  <div class="loader">
+    <svg height="0" width="0" viewBox="0 0 64 64" class="absolute">
+      <defs xmlns="http://www.w3.org/2000/svg">
+        <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="grad-purple-blue">
+          <stop stop-color="#973BED"></stop>
+          <stop stop-color="#007CFF" offset="1"></stop>
+        </linearGradient>
+        <linearGradient gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="grad-spinning">
+          <stop stop-color="#FFC800"></stop>
+          <stop stop-color="#F0F" offset="1"></stop>
+          <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
+        </linearGradient>
+        <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="grad-cyan-green">
+          <stop stop-color="#00E0ED"></stop>
+          <stop stop-color="#00DA72" offset="1"></stop>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#grad-purple-blue)" d="M 54.722656,3.9726563 A 2.0002,2.0002 0 0 0 54.941406,4 h 5.007813 C 58.955121,17.046124 49.099667,27.677057 36.121094,29.580078 a 2.0002,2.0002 0 0 0 -1.708985,1.978516 V 60 H 29.587891 V 31.558594 A 2.0002,2.0002 0 0 0 27.878906,29.580078 C 14.900333,27.677057 5.0448787,17.046124 4.0507812,4 H 9.28125 c 1.231666,11.63657 10.984383,20.554048 22.6875,20.734375 a 2.0002,2.0002 0 0 0 0.02344,0 c 11.806958,0.04283 21.70649,-9.003371 22.730469,-20.7617187 z" class="dash" pathLength="360"></path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#grad-spinning)" d="M 8,56 L 32,8 L 56,56 M 16,40 L 48,40" class="dash" pathLength="360"></path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#grad-purple-blue)" d="M 52,16 C 52,6 12,6 12,22 C 12,38 52,30 52,46 C 52,60 12,58 12,46" class="dash" pathLength="360"></path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#grad-cyan-green)" d="M 12,6 V 58 M 52,6 V 58 M 12,32 H 52" class="dash" pathLength="360"></path>
+    </svg>
+  </div>
+</div>
+
+<script>
+  // Show for ~4.5s then fade out the startup loader
+  setTimeout(() => {
+    const loader = document.getElementById('startup-loader');
+    if (!loader) return;
+    loader.classList.add('hidden');
+    setTimeout(() => { loader.style.display = 'none'; }, 500);
+  }, 4500);
+</script>
+
+<!-- HEADER -->
+<header>
+  <div class="logo" id="logoEl">YT</div>
+  <div class="search-bar">
+    <span style="color:#555;font-size:13px;">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search projects..." oninput="renderCards(currentFilter)">
+  </div>
+  <div class="header-right">
+    <a class="icon-btn" id="hdrGithub" href="#" target="_blank" title="GitHub">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+    </a>
+    <a class="icon-btn" id="hdrLinkedin" href="#" target="_blank" title="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a class="icon-btn" id="hdrEmail" href="#" target="_blank" title="Email">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+    </a>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="sec-lbl">Menu</div>
+    <div class="nav-item active" onclick="setNav(this,'all')"><span class="nav-icon">🏠</span> All Projects</div>
+    <div id="navCategories"></div>
+
+    <div class="divider"></div>
+    <div class="sec-lbl">Pinned</div>
+    <div id="pinnedList"><div style="padding:8px 16px;font-size:11px;color:var(--tm);">Loading...</div></div>
+
+    <div class="user-bar">
+      <div class="avatar" id="sideAvatar">YT</div>
+      <span class="username" id="sideUsername">Yash Tambade</span>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="hero">
+      <div class="hero-bg" id="heroBg">
+        <div class="hero-img-area" id="heroImgArea"><div class="hero-ph">{ }</div></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-tag" id="heroTag">Featured Project</div>
+          <div class="hero-title" id="heroTitle">Loading repos...</div>
+          <div class="hero-desc" id="heroDesc">Fetching your GitHub projects live...</div>
+          <div class="hero-meta" id="heroMeta"></div>
+          <div class="hero-actions">
+            <button class="btn-red" id="heroViewBtn" onclick="">View Project</button>
+            <button class="btn-ghost" id="heroCodeBtn">Source Code</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-dots" id="heroDots"></div>
+    </div>
+
+    <div class="content-area">
+      <div class="section-header">
+        <div class="section-title" id="sectionTitle">All Projects</div>
+        <div class="sort-lbl" id="repoCount">Loading...</div>
+      </div>
+      <div id="cardsGrid" class="cards-grid">
+        <div class="loading-state" style="grid-column:1/-1">
+          <div class="spinner"></div>
+          <div class="loading-txt">Fetching your GitHub repositories...</div>
+        </div>
+      </div>
+
+      <div class="section-divider">
+        <span>Some of My Skills</span>
+      </div>
+
+      <div id="skillsList"></div>
+    </div>
+  </main>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="sec-lbl">Connect</div>
+
+    <a class="social-link" id="spGithubMain" target="_blank">
+      <div class="social-icon" style="background:#24292e;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.79.55C20.21 21.38 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+      </div>
+      <div class="social-info">
+        <span class="social-name">GitHub Main</span>
+        <span class="social-handle">@yashtambade56-ux</span>
+      </div>
+    </a>
+    <a class="social-link" id="spGithubAlt" target="_blank">
+      <div class="social-icon" style="background:#2d333b;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.9.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.67.79.55C20.21 21.38 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+      </div>
+      <div class="social-info">
+        <span class="social-name">GitHub Alt</span>
+        <span class="social-handle">@Yashhh710</span>
+      </div>
+    </a>
+    <a class="social-link" id="spLinkedin" target="_blank">
+      <div class="social-icon" style="background:#0a66c2;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </div>
+      <div class="social-info">
+        <span class="social-name">LinkedIn</span>
+        <span class="social-handle" id="spLinkedinHandle"></span>
+      </div>
+    </a>
+    <a class="social-link" id="spInstagram" target="_blank">
+      <div class="social-icon" style="background:#c13584;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="1.1" fill="#fff" stroke="none"/></svg>
+      </div>
+      <div class="social-info">
+        <span class="social-name">Instagram</span>
+        <span class="social-handle">@yashhh.710</span>
+      </div>
+    </a>
+    <a class="social-link" id="spEmail" target="_blank">
+      <div class="social-icon" style="background:#e4000f;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+      </div>
+      <div class="social-info">
+        <span class="social-name">Email</span>
+        <span class="social-handle">yashtambade56@gmail.com</span>
+      </div>
+    </a>
+
+    <div class="divider" style="margin:6px 0;"></div>
+    <div class="sec-lbl">GitHub Stats</div>
+    <div style="padding:8px 14px 10px;" id="statsList">
+      <div class="stat-row"><span>Repos</span><span class="stat-val" id="statRepos">—</span></div>
+      <div class="stat-row"><span>Languages</span><span class="stat-val" id="statLangs">—</span></div>
+      <div class="stat-row"><span>Latest push</span><span class="stat-val" id="statLatest">—</span></div>
+      <div class="stat-row"><span>Forks total</span><span class="stat-val" id="statForks">—</span></div>
+    </div>
+
+    <button class="hire-btn" id="hireBtn">💌 Hire Me</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-hero" id="modalHero">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-actions">
+        <button class="btn-red" id="modalLiveBtn">🚀 View Live</button>
+        <button class="btn-outline" id="modalCodeBtn">⌨️ Source Code</button>
+        <button class="btn-outline" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script/gh_tokens.js"></script>
+<script>
+/* ─── globals ─── */
+let ALL_REPOS = [];
+let heroIndex = 0;
+let heroTimer;
+let currentFilter = 'all';
+
+/* ─── helpers ─── */
+function timeAgo(iso) {
+  const d = new Date(iso), now = new Date();
+  const diff = Math.floor((now - d) / 1000);
+  if (diff < 60)   return 'just now';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  if (diff < 2592000) return Math.floor(diff/86400) + 'd ago';
+  if (diff < 31536000) return Math.floor(diff/2592000) + 'mo ago';
+  return Math.floor(diff/31536000) + 'y ago';
+}
+
+function fmtDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+}
+
+function langColor(lang) { return (LANG_COLOR && LANG_COLOR[lang]) || '#888'; }
+function langBg(lang)    { return (LANG_BG    && LANG_BG[lang])    || '#111'; }
+
+// Looks up the manual override entry for a repo from REPO_OVERRIDES
+// (data.js) — one place per repo holding both its image and category.
+function getOverride(repo) {
+  return (typeof REPO_OVERRIDES !== 'undefined' && REPO_OVERRIDES[repo.name]) || {};
+}
+
+// Figures out which category bucket(s) a repo belongs to. Fully manual —
+// reads repo.category, set from REPO_OVERRIDES at fetch time. Accepts
+// either a single string ("web") or an array of strings (["web","projects"])
+// so a repo can live in more than one category. Always returns an array.
+// Falls back to the last (catch-all) category in CATEGORIES if unset or
+// if none of the given keys exist.
+function getCategory(repo) {
+  const ov = getOverride(repo);
+  const raw = ov.category;
+  const list = Array.isArray(raw) ? raw : (raw ? [raw] : []);
+  const valid = list.filter(key => CATEGORIES.some(c => c.key === key));
+  return valid.length ? valid : [CATEGORIES[CATEGORIES.length - 1].key]; // catch-all
+}
+
+function catLabel(key) {
+  const c = CATEGORIES.find(c => c.key === key);
+  return c ? c.label : key;
+}
+
+function openLink(url) { window.open(url, '_blank'); }
+
+// Resolves the image to show for a repo: ONLY the manual image you
+// set in REPO_OVERRIDES (data.js). No auto-scraping — fully manual.
+function repoImage(r) { return r.customImg || ''; }
+
+/* ─── GitHub fetch ─── */
+// Tokens are loaded from generated `script/gh_tokens.js` (regenerate from .env)
+let GH_TOKENS = (typeof window !== 'undefined' && window.GH_TOKENS) ? window.GH_TOKENS : [];
+let _ghTokIdx = 0;
+function ghHeaders() {
+  if (!GH_TOKENS || GH_TOKENS.length === 0) return {};
+  return { Authorization: "token " + GH_TOKENS[_ghTokIdx++ % GH_TOKENS.length] };
+}
+
+async function fetchRepos(user) {
+  const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&sort=updated`, { headers: ghHeaders() });
+  if (!res.ok) {
+    if (res.status === 403 || res.status === 429) {
+      const reset = res.headers.get('X-RateLimit-Reset');
+      const resetTime = reset ? new Date(reset * 1000).toLocaleTimeString() : 'a few minutes';
+      throw new Error(`GitHub API rate limit exceeded for "${user}". Resets at ${resetTime}. Try again later or open the page less frequently.`);
+    }
+    throw new Error(`GitHub API error ${res.status} for user "${user}".`);
+  }
+  const data = await res.json();
+  return data.map(r => {
+    const repo = {
+      id:          r.id,
+      name:        r.name,
+      fullName:    r.full_name,
+      desc:        r.description || 'No description provided.',
+      lang:        r.language || 'Code',
+      homepage:    r.homepage || '',
+      url:         r.html_url,
+      forks:       r.forks_count,
+      pushed:      r.pushed_at,
+      updated:     r.updated_at,
+      created:     r.created_at,
+      topics:      r.topics || [],
+      account:     user,
+    };
+    // Manual image + category — set both at once in REPO_OVERRIDES (data.js)
+    const ov = getOverride(repo);
+    repo.customImg = ov.img || '';
+    repo.category  = getCategory(repo);
+    repo.pinned    = !!ov.pinned;
+    return repo;
+  });
+}
+
+async function loadAllRepos() {
+  const users = PROFILE.githubUsers || [];
+  const results = await Promise.all(users.map(fetchRepos));
+  let merged = results.flat();
+
+  // Remove forks and sort by pushed date
+  merged = merged
+    .filter(r => r.name !== `${r.account}.github.io` || true)
+    .sort((a,b) => new Date(b.pushed) - new Date(a.pushed));
+
+  // Deduplicate by name (keep most recent)
+  const seen = new Set();
+  merged = merged.filter(r => {
+    if (seen.has(r.name.toLowerCase())) return false;
+    seen.add(r.name.toLowerCase()); return true;
+  });
+
+  ALL_REPOS = merged;
+
+  bootAfterFetch();
+}
+
+/* ─── boot after repos loaded ─── */
+function bootAfterFetch() {
+  buildDots();
+  setHero(0);
+  renderCards('all');
+  bootPinned();
+  updateStats();
+  startAutoRotate();
+  logManualTemplates();
+}
+
+// Prints a ready-to-paste REPO_OVERRIDES block in the browser console
+// containing every real repo currently fetched from GitHub, each with
+// an empty img slot and a default "web" category. Open DevTools
+// (F12 or Cmd+Opt+J) → Console tab, fill in the image links and
+// categories, then paste the whole block into data.js to replace
+// REPO_OVERRIDES there.
+function logManualTemplates() {
+  const validKeys = CATEGORIES.map(c => `"${c.key}"`).join(', ');
+  const lines = ALL_REPOS.map(r =>
+    `  "${r.name}": { img: "", category: "web" },`
+  ).join('\n');
+
+  console.log(
+    `%cSet each repo's image + category below (valid categories: ${validKeys}), then copy this whole block into REPO_OVERRIDES in data.js.\n` +
+    `Tip: category can be a single string or an array (e.g. ["web","projects"]) to file a repo under more than one bucket. Add pinned: true to force a repo into the top pinned strip.\n\n` +
+    'const REPO_OVERRIDES = {\n' + lines + '\n};',
+    'color:#4a9eff;font-size:12px;'
+  );
+
+  const noOverrides = Object.keys(REPO_OVERRIDES || {}).length === 0;
+  if (noOverrides) {
+    showToast('📋 Repo list ready in browser console (F12) for images & categories');
+  }
+}
+
+/* ─── stats ─── */
+function updateStats() {
+  const langs = new Set(ALL_REPOS.map(r=>r.lang).filter(Boolean));
+  const totalForks = ALL_REPOS.reduce((s,r)=>s+r.forks,0);
+  const latest = ALL_REPOS[0] ? timeAgo(ALL_REPOS[0].pushed) : '—';
+  document.getElementById('statRepos').textContent  = ALL_REPOS.length;
+  document.getElementById('statLangs').textContent  = langs.size;
+  document.getElementById('statLatest').textContent = latest;
+  document.getElementById('statForks').textContent  = totalForks;
+  document.getElementById('repoCount').textContent  = `${ALL_REPOS.length} repos`;
+}
+
+/* ─── HERO ─── */
+function buildDots() {
+  const c = document.getElementById('heroDots');
+  c.innerHTML = '';
+  ALL_REPOS.slice(0,6).forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'dot'+(i===0?' active':'');
+    d.onclick = () => { clearInterval(heroTimer); setHero(i); };
+    c.appendChild(d);
+  });
+}
+
+function setHero(idx) {
+  if (!ALL_REPOS.length) return;
+  heroIndex = idx;
+  const r = ALL_REPOS[idx];
+  const acc = r.accent || langColor(r.lang);
+  const bg  = langBg(r.lang);
+
+  document.getElementById('heroTag').textContent   = r.lang || 'Project';
+  document.getElementById('heroTitle').textContent = r.name;
+  document.getElementById('heroDesc').textContent  = r.desc;
+  document.getElementById('heroBg').style.background =
+    `linear-gradient(135deg,${bg} 0%,${bg}ee 35%,#1a1a2e 100%)`;
+
+  document.getElementById('heroMeta').innerHTML = `
+    <span>📅 Pushed ${timeAgo(r.pushed)}</span>
+    <span>🍴 ${r.forks} forks</span>
+    <span>👤 ${r.account}</span>`;
+
+  const imgArea = document.getElementById('heroImgArea');
+  const himg = repoImage(r);
+  if (himg) {
+    imgArea.innerHTML = `<img src="${himg}" alt="${r.name}">`;
+  } else {
+    imgArea.innerHTML = `<div class="hero-ph" style="color:${acc}22;font-size:72px;font-weight:900;">${r.name.slice(0,2).toUpperCase()}</div>`;
+  }
+
+  document.getElementById('heroViewBtn').onclick = () => openModal(r);
+  document.getElementById('heroCodeBtn').onclick = () => openLink(r.url);
+  document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active',i===idx));
+}
+
+function startAutoRotate() {
+  clearInterval(heroTimer);
+  heroTimer = setInterval(() => {
+    heroIndex = (heroIndex+1) % Math.min(6, ALL_REPOS.length);
+    setHero(heroIndex);
+  }, 4500);
+}
+
+/* ─── PINNED ─── */
+function bootPinned() {
+  // Show ONLY the repos explicitly marked pinned: true in REPO_OVERRIDES.
+  // If none are pinned yet, fall back to the 5 most recently pushed repos
+  // so the strip isn't empty by default.
+  const pinned = ALL_REPOS.filter(r => r.pinned);
+  const list   = pinned.length ? pinned : ALL_REPOS.slice(0, 5);
+
+  document.getElementById('pinnedList').innerHTML = list.map(r => {
+    const img = repoImage(r);
+    return `
+    <div class="pinned-item" onclick="openModal(ALL_REPOS[${ALL_REPOS.indexOf(r)}])">
+      <div class="pinned-thumb" style="background:${langColor(r.lang)}22;">
+        ${img ? `<img src="${img}" alt="${r.name}">` : `<span style="font-size:10px;color:${langColor(r.lang)};font-weight:700;">${r.name.slice(0,2).toUpperCase()}</span>`}
+      </div>
+      <span class="pinned-name">${r.name}</span>
+    </div>`;
+  }).join('');
+}
+
+/* ─── CARDS ─── */
+function renderCards(filter) {
+  currentFilter = filter;
+  const q = document.getElementById('searchInput').value.toLowerCase();
+
+  let list = ALL_REPOS.filter(r => {
+    const fOk = filter === 'all' || (Array.isArray(r.category) ? r.category.includes(filter) : r.category === filter);
+    const qOk = !q || r.name.toLowerCase().includes(q) || r.desc.toLowerCase().includes(q) || (r.lang||'').toLowerCase().includes(q);
+    return fOk && qOk;
+  });
+
+  const grid = document.getElementById('cardsGrid');
+
+  if (!list.length && ALL_REPOS.length === 0) {
+    grid.innerHTML = `<div class="loading-state" style="grid-column:1/-1"><div class="spinner"></div><div class="loading-txt">Fetching your GitHub repositories...</div></div>`;
+    return;
+  }
+
+  if (!list.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;color:var(--tm);font-size:13px;padding:24px 0;">No projects found.</div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(r => {
+    const ac = langColor(r.lang);
+    const bg = langBg(r.lang);
+    const img = repoImage(r);
+    const topics = r.topics.slice(0,2).join(' · ');
+    return `
+    <div class="project-card" data-repoid="${r.id}" onclick="openModal(ALL_REPOS.find(x=>x.id===${r.id}))">
+      <div class="card-thumb" style="background:linear-gradient(135deg,${bg},${ac}22);">
+        ${img ? `<img src="${img}" alt="${r.name}">` : `<div class="card-thumb-ph">${r.name.slice(0,3).toUpperCase()}</div>`}
+        <div class="card-account">${r.account}</div>
+        ${r.lang ? `<div class="lang-dot"><span class="lang-dot-circle" style="background:${ac};"></span>${r.lang}</div>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${(Array.isArray(r.category) ? r.category.map(catLabel) : [catLabel(r.category)]).join(' / ').toUpperCase()}${topics?' · '+topics:''}</div>
+        <div class="card-name">${r.name}</div>
+        <div class="card-desc">${r.desc}</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-date">📅 ${timeAgo(r.pushed)}</span>
+        <span class="card-link">View →</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ─── NAV ─── */
+function buildNavMenu() {
+  document.getElementById('navCategories').innerHTML = CATEGORIES.map(c => `
+    <div class="nav-item" onclick="setNav(this,'${c.key}')"><span class="nav-icon">${c.icon}</span> ${c.label}</div>
+  `).join('');
+}
+
+function setNav(el, filter) {
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('sectionTitle').textContent = filter === 'all' ? 'All Projects' : catLabel(filter);
+  renderCards(filter);
+}
+
+/* ─── MODAL ─── */
+function openModal(r) {
+  if (!r) return;
+  const ac = langColor(r.lang);
+  const bg = langBg(r.lang);
+  const hero = document.getElementById('modalHero');
+  hero.style.background = `linear-gradient(135deg,${bg},${ac}44)`;
+
+  const mimg = repoImage(r);
+  if (mimg) {
+    hero.innerHTML = `<button class="modal-close" onclick="closeModal()">✕</button><img src="${mimg}" alt="${r.name}">`;
+  } else {
+    hero.innerHTML = `<button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-hero-ph" style="color:${ac};">${r.name.slice(0,3).toUpperCase()}</div>`;
+  }
+
+  document.getElementById('modalTitle').textContent = r.name;
+  document.getElementById('modalDesc').textContent  = r.desc;
+  document.getElementById('modalMeta').innerHTML = `
+    <span>📅 Created ${fmtDate(r.created)}</span>
+    <span>🔄 Updated ${fmtDate(r.updated)}</span>
+    <span>🍴 ${r.forks} forks</span>
+    <span>👤 ${r.account}</span>`;
+
+  const tags = [...(r.topics||[]), r.lang].filter(Boolean);
+  document.getElementById('modalTags').innerHTML = tags.map(t=>`<span class="tag">${t}</span>`).join('');
+
+  const liveBtn = document.getElementById('modalLiveBtn');
+  if (r.homepage) {
+    liveBtn.style.display = '';
+    liveBtn.onclick = () => openLink(r.homepage);
+  } else {
+    liveBtn.style.display = 'none';
+  }
+  document.getElementById('modalCodeBtn').onclick = () => openLink(r.url);
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+/* ─── TOAST ─── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ─── PROFILE BOOT ─── */
+function bootProfile() {
+  const p = PROFILE;
+  const s = p.socials;
+  // Keep a consistent page title
+  document.title = "Yash's Projects";
+  document.getElementById('logoEl').textContent      = p.initials;
+  document.getElementById('sideUsername').textContent = p.name;
+  if (p.avatar) {
+    document.getElementById('sideAvatar').innerHTML = `<img src="${p.avatar}" alt="${p.name}">`;
+  }
+
+  const setHref = (id, v) => { const el = document.getElementById(id); if (el) el.href = v; };
+  const gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=yashtambade56%40gmail.com';
+  setHref('hdrGithub',  s.githubMain);
+  setHref('hdrLinkedin', s.linkedin);
+  setHref('hdrEmail',   gmailUrl);
+
+  document.getElementById('spGithubMain').href = s.githubMain;
+  document.getElementById('spGithubAlt').href  = s.githubAlt;
+  document.getElementById('spLinkedin').href   = s.linkedin;
+  document.getElementById('spLinkedinHandle').textContent = 'yash-tambade-173508379';
+  document.getElementById('spInstagram').href  = s.instagram;
+  document.getElementById('spEmail').href      = gmailUrl;
+  document.getElementById('hireBtn').onclick   = () => openLink(gmailUrl);
+}
+
+function bootSkills() {
+  document.getElementById('skillsList').innerHTML = SKILLS.map(s=>`
+    <div class="skill-row">
+      <span class="skill-label">${s.label}</span>
+      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:${s.pct}%"></div></div>
+      <span class="skill-pct">${s.pct}%</span>
+    </div>`).join('');
+}
+
+/* ─── INIT ─── */
+buildNavMenu();
+bootProfile();
+bootSkills();
+loadAllRepos().catch(err => {
+  const msg = err && err.message ? err.message : String(err);
+  const isRateLimit = msg.toLowerCase().includes('rate limit');
+  document.getElementById('cardsGrid').innerHTML =
+    `<div style="grid-column:1/-1;color:var(--tm);font-size:13px;padding:24px 0;">
+      ${isRateLimit ? '⏳' : '⚠️'} <strong style="color:#fff;">${isRateLimit ? 'GitHub rate limit hit' : 'Could not load repos'}</strong><br>
+      <span style="font-size:11px;line-height:1.7;">${msg}</span>
+    </div>`;
+});
+</script>
+</body>
+</html>
