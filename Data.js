@@ -148,4 +148,5 @@ const REPO_OVERRIDES = {
 "Vehicle-Fleet-Management-System-": { img: "imgs/Vehicle-Fleet-Management-System-.png", category:"projects" },
 "EduGrid-Central": { img: "imgs/EduGrid-Central.png", category: ["web","projects"] },
 "yash.portfolio.professional-": { img: "imgs/yash.portfolio.professional-.png", category: "portfolios", pinned: true },
+"spotify.clone": { img: "imgs/spotify.clone.png", category: "web" },
 };
