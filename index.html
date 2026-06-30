@@ -299,13 +299,6 @@ main::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
   z-index: 1;
 }
 
-.card-views {
-  position: absolute; bottom: 8px; left: 8px;
-  font-size: 10px; font-weight: 600; color: #fff;
-  background: rgba(0,0,0,.55); padding: 2px 7px; border-radius: 10px;
-  z-index: 1;
-}
-
 .card-body { padding: 9px 11px 5px; flex: 1; }
 .card-cat { font-size: 9px; font-weight: 600; color: var(--tm); letter-spacing: .8px; text-transform: uppercase; margin-bottom: 3px; }
 .card-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -687,7 +680,6 @@ main::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 <div class="toast" id="toast"></div>
 
 <script src="script/gh_tokens.js"></script>
-<script src="script/visitorCounter.js"></script>
 <script>
 /* ─── globals ─── */
 let ALL_REPOS = [];
@@ -821,7 +813,6 @@ function bootAfterFetch() {
   updateStats();
   startAutoRotate();
   logManualTemplates();
-  startVisitorLivePolling();
 }
 
 // Prints a ready-to-paste REPO_OVERRIDES block in the browser console
@@ -966,7 +957,6 @@ function renderCards(filter) {
         ${img ? `<img src="${img}" alt="${r.name}">` : `<div class="card-thumb-ph">${r.name.slice(0,3).toUpperCase()}</div>`}
         <div class="card-account">${r.account}</div>
         ${r.lang ? `<div class="lang-dot"><span class="lang-dot-circle" style="background:${ac};"></span>${r.lang}</div>` : ''}
-        <span class="card-views" data-views-for="${visitorKey(r)}">👁 …</span>
       </div>
       <div class="card-body">
         <div class="card-cat">${(Array.isArray(r.category) ? r.category.map(catLabel) : [catLabel(r.category)]).join(' / ').toUpperCase()}${topics?' · '+topics:''}</div>
@@ -979,8 +969,6 @@ function renderCards(filter) {
       </div>
     </div>`;
   }).join('');
-
-  refreshVisitorBadges(list);
 }
 
 /* ─── NAV ─── */
@@ -1019,10 +1007,7 @@ function openModal(r) {
     <span>📅 Created ${fmtDate(r.created)}</span>
     <span>🔄 Updated ${fmtDate(r.updated)}</span>
     <span>🍴 ${r.forks} forks</span>
-    <span>👤 ${r.account}</span>
-    <span data-views-for="${visitorKey(r)}">👁 …</span>`;
-
-  trackVisitorOpen(r);
+    <span>👤 ${r.account}</span>`;
 
   const tags = [...(r.topics||[]), r.lang].filter(Boolean);
   document.getElementById('modalTags').innerHTML = tags.map(t=>`<span class="tag">${t}</span>`).join('');
