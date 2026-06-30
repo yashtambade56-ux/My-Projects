@@ -1,8 +1,3 @@
-// ============================================================
-//  PORTFOLIO DATA  —  edit this file to update your info
-//  Projects are fetched LIVE from GitHub automatically
-// ============================================================
-
 const PROFILE = {
   name:     "Yash Tambade",
   initials: "YT",
@@ -16,7 +11,7 @@ const PROFILE = {
     instagram:   "https://www.instagram.com/yashhh.710",
     email:       "yashtambade56@gmail.com"
   },
-  // GitHub usernames to fetch repos from (both accounts merged)
+  
   githubUsers: ["yashtambade56-ux", "Yashhh710"]
 };
 
@@ -83,21 +78,10 @@ const LANG_BG = {
   "Jupyter Notebook": "#1a0800",
 };
 
-
-// Each entry can now also carry:
-//   account : which GitHub username the repo lives under (used for the
-//             fallback card grid + to build the source-code link)
-//   live    : live demo / deployed URL (Live Demo button)
-//   source  : source code URL — leave blank to auto-build from
-//             https://github.com/{account}/{repoName}
-// These "live" + "source" values are ONLY used as a fallback when the
-// live GitHub API fetch fails (e.g. rate limit). When the API call
-// succeeds, "live" comes from the repo's real GitHub homepage field and
-// "source" from the repo's real GitHub URL, same as before.
 const REPO_OVERRIDES = {
 
 
-// ========== GitHub id's ==========
+// ========== GitHub Rrepo's ==========
 "GameBox-Scratch-Mini-Game-Collection": { img: "imgs/GameBox-Scratch-Mini-Game-Collection.png", category: "other", account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/GameBox-Scratch-Mini-Game-Collection" },
 "MathBlaze-Dragon-Strike": { img: "imgs/mathblaze.png", category: ["other","projects"], account: "yashtambade56-ux", live: "https://scratch.mit.edu/projects/1257806716/fullscreen/", source: "https://github.com/yashtambade56-ux/MathBlaze-Dragon-Strike" },
 "python": { img: "imgs/python.png", category: "Class Work", account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/python" },
