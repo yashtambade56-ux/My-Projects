@@ -689,6 +689,7 @@ let currentFilter = 'all';
 
 /* ─── helpers ─── */
 function timeAgo(iso) {
+  if (!iso) return '—';
   const d = new Date(iso), now = new Date();
   const diff = Math.floor((now - d) / 1000);
   if (diff < 60)   return 'just now';
@@ -700,6 +701,7 @@ function timeAgo(iso) {
 }
 
 function fmtDate(iso) {
+  if (!iso) return '—';
   return new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 }
 
@@ -778,6 +780,37 @@ async function fetchRepos(user) {
     repo.customImg = ov.img || '';
     repo.category  = getCategory(repo);
     repo.pinned    = !!ov.pinned;
+    return repo;
+  });
+}
+
+// Builds a repo list straight from REPO_OVERRIDES (Data.js) — no GitHub
+// API call involved. Used as a fallback so the card grid still shows
+// something (with whatever live-demo/source links you've filled in)
+// even when the GitHub API rate limit is hit.
+function buildFallbackRepos() {
+  return Object.keys(REPO_OVERRIDES).map((name, i) => {
+    const ov = REPO_OVERRIDES[name] || {};
+    const account = ov.account || (PROFILE.githubUsers && PROFILE.githubUsers[0]) || '';
+    const source = ov.source || (account ? `https://github.com/${account}/${name}` : '#');
+    const repo = {
+      id: `fallback-${name}-${i}`,
+      name,
+      fullName: account ? `${account}/${name}` : name,
+      desc: 'Live data unavailable right now — showing cached project info.',
+      lang: '',
+      homepage: ov.live || '',
+      url: source,
+      forks: 0,
+      pushed: null,
+      updated: null,
+      created: null,
+      topics: [],
+      account,
+    };
+    repo.customImg = ov.img || '';
+    repo.category = getCategory(repo);
+    repo.pinned = !!ov.pinned;
     return repo;
   });
 }
@@ -1076,12 +1109,26 @@ bootSkills();
 loadAllRepos().catch(err => {
   const msg = err && err.message ? err.message : String(err);
   const isRateLimit = msg.toLowerCase().includes('rate limit');
-  document.getElementById('cardsGrid').innerHTML =
-    `<div style="grid-column:1/-1;color:var(--tm);font-size:13px;padding:24px 0;">
-      ${isRateLimit ? '⏳' : '⚠️'} <strong style="color:#fff;">${isRateLimit ? 'GitHub rate limit hit' : 'Could not load repos'}</strong><br>
-      <span style="font-size:11px;line-height:1.7;">${msg}</span>
-    </div>`;
+
+  // Fall back to the static REPO_OVERRIDES data so the grid still shows
+  // cards (with whatever live/source links are filled in) instead of
+  // just an error message.
+  ALL_REPOS = buildFallbackRepos();
+
+  if (ALL_REPOS.length) {
+    bootAfterFetch();
+    showToast(isRateLimit
+      ? '⏳ GitHub rate limit hit — showing cached projects'
+      : '⚠️ Could not load live data — showing cached projects');
+  } else {
+    document.getElementById('cardsGrid').innerHTML =
+      `<div style="grid-column:1/-1;color:var(--tm);font-size:13px;padding:24px 0;">
+        ${isRateLimit ? '⏳' : '⚠️'} <strong style="color:#fff;">${isRateLimit ? 'GitHub rate limit hit' : 'Could not load repos'}</strong><br>
+        <span style="font-size:11px;line-height:1.7;">${msg}</span>
+      </div>`;
+  }
 });
+
 </script>
 </body>
 </html>
