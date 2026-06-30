@@ -149,4 +149,5 @@ const REPO_OVERRIDES = {
 "EduGrid-Central": { img: "imgs/EduGrid-Central.png", category: ["web","projects"] },
 "yash.portfolio.professional-": { img: "imgs/yash.portfolio.professional-.png", category: "portfolios", pinned: true },
 "spotify.clone": { img: "imgs/spotify.clone.png", category: "web" },
+"pokedex-v2": { img: "imgs/pokedex-v2.png", category: "web" },
 };
