@@ -142,4 +142,5 @@ const REPO_OVERRIDES = {
 "pokedex-v2": { img: "imgs/pokedex-v2.png", category: "web", account: "Yashhh710", live: "https://yashhh710.github.io/pokedex-v2/", source: "https://github.com/Yashhh710/pokedex-v2" },
 "My-Projects": { img: "imgs/My-Projects.png", category: "web", account: "yashtambade56-ux", live: "https://myprojects-yash.vercel.app/", source: "https://github.com/yashtambade56-ux/My-Projects" },
 "F1-three.js": { img: "imgs/F1-three.js.png", category: "web", account: "Yashhh710", live: "https://yashhh710.github.io/F1-three.js/", source: "https://github.com/Yashhh710/F1-three.js" },
+"Demo.trading.sim": { img: "imgs/Demo.trading.sim.png", category: "web", account: "Yashhh710", live: "https://demo-trading-simulator-dusky.vercel.app/loading-intro/index.html", source: "https://github.com/Yashhh710/Demo.trading.sim" },
 };
