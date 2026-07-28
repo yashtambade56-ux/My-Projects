@@ -153,5 +153,5 @@ const REPO_OVERRIDES = {
 "F1-three.js": { img: "imgs/F1-three.js.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/F1-three.js/", source: "https://github.com/Yashhh710/F1-three.js" },
 "Demo.trading.sim": { img: "imgs/Demo.trading.sim.png", category: ["web","timepass"], account: "Yashhh710", live: "https://demo-trading-simulator-dusky.vercel.app/loading-intro/index.html", source: "https://github.com/Yashhh710/Demo.trading.sim" },
 "RestroManager-AI": { img: "imgs/RestroManager-AI.png", category: ["web","main"], account: "Yashhh710", live: "https://restro-manager-ai.vercel.app/", source: "https://github.com/Yashhh710/RestroManager-AI" },
-"Java-Progress": { img: "imgs/Java-Progress.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Java-Progress" ,
+"Java-Progress": { img: "imgs/Java-Progress.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Java-Progress" },
 };
