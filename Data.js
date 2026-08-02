@@ -3,7 +3,7 @@ const PROFILE = {
   initials: "YT",
   title:    "Full Stack Developer",
   tagline:  "Building cool stuff with code.",
-  avatar:   "",
+  avatar:   "https://avatars.githubusercontent.com/u/233944797?v=4",
   socials: {
     githubMain:  "https://github.com/yashtambade56-ux",
     githubAlt:   "https://github.com/Yashhh710",
