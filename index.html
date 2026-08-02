@@ -1371,8 +1371,7 @@ function openModal(r) {
   // Documents dropdown (Certificate / PPT / Report) — hackathon projects only
   currentModalDocs = r.docs || {};
   const isHackathon = (r.category || []).includes('hackathons');
-  const hasAnyDoc = ['certificate','ppt','report'].some(k => currentModalDocs[k]);
-  document.getElementById('modalDocsDropdown').style.display = (isHackathon && hasAnyDoc) ? '' : 'none';
+  document.getElementById('modalDocsDropdown').style.display = isHackathon ? '' : 'none';
   document.getElementById('docsMenu').classList.remove('open');
 
   document.getElementById('modalOverlay').classList.add('open');
