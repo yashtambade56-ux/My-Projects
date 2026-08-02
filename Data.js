@@ -125,7 +125,7 @@ const REPO_OVERRIDES = {
 "javascript-progress": { img: "imgs/javascript-progress.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/javascript-progress" },
 "Html-csss-mini-project": { img: "imgs/Html-csss-mini-project.png", category: ["web","projects","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/Html-csss-mini-project/", source: "https://github.com/Yashhh710/Html-csss-mini-project" },
 "html-css": { img: "imgs/html-css.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/html-css" },
-"MindScreen": { img: "imgs/MindScreen.png", category: ["hackathons","web","timepass"], account: "Yashhh710", live: "https://mind-screen.vercel.app/", source: "https://github.com/Yashhh710/MindScreen" },
+"MindScreen": { img: "imgs/MindScreen.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://mind-screen.vercel.app/", source: "https://github.com/Yashhh710/MindScreen" },
 "Needle-Noise": { img: "imgs/Needle-Noise.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/Needle-Noise/", source: "https://github.com/Yashhh710/Needle-Noise" },
 "Mac": { img: "imgs/Mac.png", category: ["portfolios","web","main"], pinned: true, account: "Yashhh710", live: "https://mac-lyart.vercel.app/", source: "https://github.com/Yashhh710/Mac" },
 "my-skiills": { img: "imgs/my-skiills.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/my-skiills/", source: "https://github.com/Yashhh710/my-skiills" },
@@ -154,4 +154,5 @@ const REPO_OVERRIDES = {
 "Demo.trading.sim": { img: "imgs/Demo.trading.sim.png", category: ["web","timepass"], account: "Yashhh710", live: "https://demo-trading-simulator-dusky.vercel.app/loading-intro/index.html", source: "https://github.com/Yashhh710/Demo.trading.sim" },
 "RestroManager-AI": { img: "imgs/RestroManager-AI.png", category: ["web","main"], account: "Yashhh710", live: "https://restro-manager-ai.vercel.app/", source: "https://github.com/Yashhh710/RestroManager-AI" },
 "Java-Progress": { img: "imgs/Java-Progress.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Java-Progress" },
+"InboxIQ": { img: "imgs/InboxIQ.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://inbox-iq-hack.vercel.app/", source: "https://github.com/Yashhh710/InboxIQ" },
 };
