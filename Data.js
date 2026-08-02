@@ -154,5 +154,5 @@ const REPO_OVERRIDES = {
 "Demo.trading.sim": { img: "imgs/Demo.trading.sim.png", category: ["web","timepass"], account: "Yashhh710", live: "https://demo-trading-simulator-dusky.vercel.app/loading-intro/index.html", source: "https://github.com/Yashhh710/Demo.trading.sim" },
 "RestroManager-AI": { img: "imgs/RestroManager-AI.png", category: ["web","main"], account: "Yashhh710", live: "https://restro-manager-ai.vercel.app/", source: "https://github.com/Yashhh710/RestroManager-AI" },
 "Java-Progress": { img: "imgs/Java-Progress.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Java-Progress" },
-"InboxIQ": { img: "imgs/InboxIQ.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://inbox-iq-hack.vercel.app/", source: "https://github.com/Yashhh710/InboxIQ", docs: { certificate: "", ppt: "", report: "" } },
+"InboxIQ": { img: "imgs/haketons/HackerRank-aug26/InboxIQ.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://inbox-iq-hack.vercel.app/", source: "https://github.com/Yashhh710/InboxIQ", docs: { certificate: "", ppt: "imgs/haketons/HackerRank-aug26/ppt.pdf", report: "imgs/haketons/HackerRank-aug26/Report.pdf" } },
 };
