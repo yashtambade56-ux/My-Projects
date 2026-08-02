@@ -591,6 +591,26 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 }
 .btn-outline:hover { border-color: #666; color: #fff; }
 
+/* DOCS DROPDOWN (hackathon: certificate / ppt / report) */
+.modal-docs-dropdown { position: relative; }
+.docs-menu {
+  position: absolute; bottom: calc(100% + 8px); left: 0;
+  min-width: 190px; background: #1c1c1c; border: 1px solid #3a3a3a;
+  border-radius: 8px; padding: 6px; z-index: 10;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .15s, transform .15s, visibility .15s;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+.docs-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.docs-menu button {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  background: transparent; border: none; color: var(--ts);
+  font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 500;
+  padding: 8px 10px; border-radius: 5px; cursor: pointer; text-align: left;
+  transition: background .15s, color .15s;
+}
+.docs-menu button:hover { background: #2a2a2a; color: #fff; }
+
 /* TOAST */
 .toast {
   position: fixed; bottom: 20px; right: 20px;
@@ -855,6 +875,14 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
       <div class="modal-actions">
         <button class="btn-red" id="modalLiveBtn">🚀 View Live</button>
         <button class="btn-outline" id="modalCodeBtn">⌨️ Source Code</button>
+        <div class="modal-docs-dropdown" id="modalDocsDropdown" style="display:none;">
+          <button class="btn-outline" id="modalDocsBtn" onclick="toggleDocsMenu(event)">📄 Documents ▾</button>
+          <div class="docs-menu" id="docsMenu">
+            <button onclick="openDocFile('certificate')">🎓 Certificate</button>
+            <button onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
+            <button onclick="openDocFile('report')">📃 Report</button>
+          </div>
+        </div>
         <button class="btn-outline" onclick="closeModal()">Close</button>
       </div>
     </div>
@@ -967,6 +995,7 @@ async function fetchRepos(user) {
     repo.customImg = ov.img || '';
     repo.category  = getCategory(repo);
     repo.pinned    = !!ov.pinned;
+    repo.docs      = ov.docs || {};
     return repo;
   });
 }
@@ -998,6 +1027,7 @@ function buildFallbackRepos() {
     repo.customImg = ov.img || '';
     repo.category = getCategory(repo);
     repo.pinned = !!ov.pinned;
+    repo.docs = ov.docs || {};
     return repo;
   });
 }
@@ -1337,10 +1367,46 @@ function openModal(r) {
     liveBtn.style.display = 'none';
   }
   document.getElementById('modalCodeBtn').onclick = () => openLink(r.url);
+
+  // Documents dropdown (Certificate / PPT / Report) — hackathon projects only
+  currentModalDocs = r.docs || {};
+  const isHackathon = (r.category || []).includes('hackathons');
+  const hasAnyDoc = ['certificate','ppt','report'].some(k => currentModalDocs[k]);
+  document.getElementById('modalDocsDropdown').style.display = (isHackathon && hasAnyDoc) ? '' : 'none';
+  document.getElementById('docsMenu').classList.remove('open');
+
   document.getElementById('modalOverlay').classList.add('open');
 }
 
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+/* ─── DOCS DROPDOWN (Certificate / PPT / Report) ─── */
+let currentModalDocs = null;
+
+function toggleDocsMenu(e) {
+  e.stopPropagation();
+  document.getElementById('docsMenu').classList.toggle('open');
+}
+
+function openDocFile(type) {
+  const url = currentModalDocs && currentModalDocs[type];
+  if (!url) {
+    showToast('No file added yet for this item.');
+    document.getElementById('docsMenu').classList.remove('open');
+    return;
+  }
+  openLink(url);
+  document.getElementById('docsMenu').classList.remove('open');
+}
+
+// Close the docs menu when clicking anywhere else on the page
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('docsMenu');
+  const dropdown = document.getElementById('modalDocsDropdown');
+  if (menu && menu.classList.contains('open') && dropdown && !dropdown.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
 
 /* ─── TOAST ─── */
 function showToast(msg) {
