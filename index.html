@@ -891,6 +891,24 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 
 <div class="toast" id="toast"></div>
 
+<!-- RATE LIMIT MODAL — only shown when the GitHub API rate limit is actually hit -->
+<div class="modal-overlay" id="rateLimitOverlay">
+  <div class="modal" style="width:420px;">
+    <div class="modal-body" style="padding:26px 24px 24px;">
+      <div class="modal-title" style="display:flex;align-items:center;gap:8px;">⏳ GitHub API Limit Reached</div>
+      <div class="modal-desc" id="rateLimitDesc" style="margin-bottom:14px;">
+        You've hit GitHub's API rate limit, so live project data can't be fetched right now. Showing cached project info instead — this will keep working, links included.
+      </div>
+      <div class="modal-meta" style="margin-bottom:18px;">
+        <span>🔄 Resets in <strong id="rateLimitCountdown" style="color:#fff;">—</strong></span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-red" id="rateLimitContinueBtn" onclick="closeRateLimitModal()">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="script/gh_tokens.js"></script>
 <script>
 /* ─── globals ─── */
@@ -1441,18 +1459,33 @@ function startRateLimitCountdown() {
   clearInterval(_rateLimitInterval);
   if (!RATE_LIMIT_RESET_AT) return;
   const label = document.getElementById('repoCount');
+  const modalTimer = document.getElementById('rateLimitCountdown');
   const baseText = `${ALL_REPOS.length} repos (cached)`;
   const tick = () => {
     const remaining = RATE_LIMIT_RESET_AT - Date.now();
     if (remaining <= 0) {
       label.textContent = `${baseText} · live data available — refresh to update`;
+      if (modalTimer) modalTimer.textContent = 'now — you can refresh';
       clearInterval(_rateLimitInterval);
       return;
     }
     label.textContent = `${baseText} · resets in ${formatCountdown(remaining)}`;
+    if (modalTimer) modalTimer.textContent = formatCountdown(remaining);
   };
   tick();
   _rateLimitInterval = setInterval(tick, 1000);
+}
+
+// Rate-limit popup — only ever opened from the isRateLimit branch below,
+// so it never shows up when the limit hasn't actually been hit.
+let _rateLimitModalShown = false;
+function openRateLimitModal() {
+  if (_rateLimitModalShown) return; // don't nag more than once per load
+  _rateLimitModalShown = true;
+  document.getElementById('rateLimitOverlay').classList.add('open');
+}
+function closeRateLimitModal() {
+  document.getElementById('rateLimitOverlay').classList.remove('open');
 }
 
 /* ─── PROFILE BOOT ─── */
@@ -1529,6 +1562,7 @@ loadAllRepos().catch(err => {
     if (isRateLimit && RATE_LIMIT_RESET_AT) {
       showToast(`⏳ GitHub rate limit hit — showing cached projects (resets in ${formatCountdown(RATE_LIMIT_RESET_AT - Date.now())})`, 5000);
       startRateLimitCountdown();
+      openRateLimitModal();
     } else {
       showToast(isRateLimit
         ? '⏳ GitHub rate limit hit — showing cached projects'
