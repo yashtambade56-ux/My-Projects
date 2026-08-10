@@ -895,6 +895,7 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 <script>
 /* ─── globals ─── */
 let ALL_REPOS = [];
+let RATE_LIMIT_RESET_AT = null; // ms epoch, set when GitHub returns a 403/429
 let heroIndex = 0;
 let heroTimer;
 let currentFilter = 'all';
@@ -968,6 +969,7 @@ async function fetchRepos(user) {
   if (!res.ok) {
     if (res.status === 403 || res.status === 429) {
       const reset = res.headers.get('X-RateLimit-Reset');
+      RATE_LIMIT_RESET_AT = reset ? reset * 1000 : Date.now() + 60 * 60 * 1000;
       const resetTime = reset ? new Date(reset * 1000).toLocaleTimeString() : 'a few minutes';
       throw new Error(`GitHub API rate limit exceeded for "${user}". Resets at ${resetTime}. Try again later or open the page less frequently.`);
     }
@@ -1210,7 +1212,7 @@ function renderCards(filter) {
     const bucket = cats.includes('main') ? 'main' : (cats.includes('timepass') ? 'timepass' : null);
     const delay = Math.min(i % 16, 16) * 0.035;
     return `
-    <div class="project-card" style="animation-delay:${delay}s" data-repoid="${r.id}" onclick="cardClick(this, ${JSON.stringify(r.id)})">
+    <div class="project-card" style="animation-delay:${delay}s" data-repoid="${r.id}" onclick="cardClick(this, this.dataset.repoid)">
       <div class="card-thumb" style="background:linear-gradient(135deg,${bg},${ac}22);">
         ${img ? `<img src="${img}" alt="${r.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded');this.style.display='none'"><div class="img-skeleton"></div>` : `<div class="card-thumb-ph">${r.name.slice(0,3).toUpperCase()}</div>`}
         ${bucket ? `<div class="card-bucket is-${bucket}">${bucket==='main' ? '🚀 Main' : '🎮 Time Pass'}</div>` : ''}
@@ -1330,7 +1332,7 @@ function cardClick(el, repoId) {
   document.querySelectorAll('.project-card.card-active').forEach(c => c.classList.remove('card-active'));
   el.classList.add('card-active');
   setTimeout(() => {
-    openModal(ALL_REPOS.find(x => x.id === repoId));
+    openModal(ALL_REPOS.find(x => String(x.id) === String(repoId)));
     setTimeout(() => el.classList.remove('card-active'), 400);
   }, 160);
 }
@@ -1411,11 +1413,46 @@ document.addEventListener('click', (e) => {
 });
 
 /* ─── TOAST ─── */
-function showToast(msg) {
+function showToast(msg, duration = 3000) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3000);
+  clearTimeout(t._hideTimer);
+  t._hideTimer = setTimeout(()=>t.classList.remove('show'), duration);
+}
+
+// Formats the ms remaining until RATE_LIMIT_RESET_AT as e.g. "42m 10s".
+function formatCountdown(ms) {
+  if (ms <= 0) return 'now';
+  const totalSec = Math.ceil(ms / 1000);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
+// Keeps the repo-count label showing a live "resets in Xm Ys" countdown
+// while running on cached/fallback data, then flips to a "refresh now"
+// hint once the GitHub rate limit window has reset.
+let _rateLimitInterval = null;
+function startRateLimitCountdown() {
+  clearInterval(_rateLimitInterval);
+  if (!RATE_LIMIT_RESET_AT) return;
+  const label = document.getElementById('repoCount');
+  const baseText = `${ALL_REPOS.length} repos (cached)`;
+  const tick = () => {
+    const remaining = RATE_LIMIT_RESET_AT - Date.now();
+    if (remaining <= 0) {
+      label.textContent = `${baseText} · live data available — refresh to update`;
+      clearInterval(_rateLimitInterval);
+      return;
+    }
+    label.textContent = `${baseText} · resets in ${formatCountdown(remaining)}`;
+  };
+  tick();
+  _rateLimitInterval = setInterval(tick, 1000);
 }
 
 /* ─── PROFILE BOOT ─── */
@@ -1489,9 +1526,14 @@ loadAllRepos().catch(err => {
 
   if (ALL_REPOS.length) {
     bootAfterFetch();
-    showToast(isRateLimit
-      ? '⏳ GitHub rate limit hit — showing cached projects'
-      : '⚠️ Could not load live data — showing cached projects');
+    if (isRateLimit && RATE_LIMIT_RESET_AT) {
+      showToast(`⏳ GitHub rate limit hit — showing cached projects (resets in ${formatCountdown(RATE_LIMIT_RESET_AT - Date.now())})`, 5000);
+      startRateLimitCountdown();
+    } else {
+      showToast(isRateLimit
+        ? '⏳ GitHub rate limit hit — showing cached projects'
+        : '⚠️ Could not load live data — showing cached projects');
+    }
   } else {
     document.getElementById('cardsGrid').innerHTML =
       `<div style="grid-column:1/-1;color:var(--tm);font-size:13px;padding:24px 0;">
