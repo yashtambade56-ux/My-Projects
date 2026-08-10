@@ -1005,7 +1005,10 @@ async function fetchRepos(user) {
 // something (with whatever live-demo/source links you've filled in)
 // even when the GitHub API rate limit is hit.
 function buildFallbackRepos() {
-  return Object.keys(REPO_OVERRIDES).map((name, i) => {
+  // Data.js lists entries oldest-first (newest appended at the bottom),
+  // so reverse the key order here to show the most recent projects
+  // on top of the grid, matching the live (pushed-date-sorted) view.
+  return Object.keys(REPO_OVERRIDES).reverse().map((name, i) => {
     const ov = REPO_OVERRIDES[name] || {};
     const account = ov.account || (PROFILE.githubUsers && PROFILE.githubUsers[0]) || '';
     const source = ov.source || (account ? `https://github.com/${account}/${name}` : '#');
@@ -1207,7 +1210,7 @@ function renderCards(filter) {
     const bucket = cats.includes('main') ? 'main' : (cats.includes('timepass') ? 'timepass' : null);
     const delay = Math.min(i % 16, 16) * 0.035;
     return `
-    <div class="project-card" style="animation-delay:${delay}s" data-repoid="${r.id}" onclick="cardClick(this, ${r.id})">
+    <div class="project-card" style="animation-delay:${delay}s" data-repoid="${r.id}" onclick="cardClick(this, ${JSON.stringify(r.id)})">
       <div class="card-thumb" style="background:linear-gradient(135deg,${bg},${ac}22);">
         ${img ? `<img src="${img}" alt="${r.name}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded');this.style.display='none'"><div class="img-skeleton"></div>` : `<div class="card-thumb-ph">${r.name.slice(0,3).toUpperCase()}</div>`}
         ${bucket ? `<div class="card-bucket is-${bucket}">${bucket==='main' ? '🚀 Main' : '🎮 Time Pass'}</div>` : ''}
