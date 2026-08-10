@@ -622,6 +622,147 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 }
 .toast.show { transform: translateY(0); opacity: 1; }
 
+/* RATE LIMIT MODAL — dark glass / frosted-mirror treatment */
+.rl-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,8,10,.55);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+.rl-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+.rl-card {
+  position: relative;
+  width: 400px; max-width: 90vw;
+  padding: 1px; border-radius: 22px;
+  background: linear-gradient(155deg, rgba(255,255,255,.16), rgba(255,255,255,.02) 40%, rgba(165,10,20,.25));
+  box-shadow: 0 24px 60px -12px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.03);
+  transform: scale(.92) translateY(14px);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
+}
+.rl-overlay.open .rl-card { transform: scale(1) translateY(0); }
+
+/* faded mirror reflection beneath the card */
+.rl-card::after {
+  content: '';
+  position: absolute; left: 6%; right: 6%; top: 100%;
+  height: 60px; border-radius: 0 0 22px 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.05), transparent 90%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.5), transparent);
+          mask-image: linear-gradient(180deg, rgba(0,0,0,.5), transparent);
+  transform: scaleY(-1);
+  opacity: .5;
+  pointer-events: none;
+}
+
+.rl-card-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 21px;
+  padding: 30px 26px 26px;
+  background: linear-gradient(160deg, rgba(30,30,32,.78), rgba(18,18,20,.85));
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.06);
+  text-align: center;
+}
+
+/* glossy diagonal mirror sheen sweeping across the glass on open */
+.rl-card-inner::before {
+  content: '';
+  position: absolute; inset: -60% -20%;
+  background: linear-gradient(115deg,
+    transparent 30%,
+    rgba(255,255,255,.10) 45%,
+    rgba(255,255,255,.22) 50%,
+    rgba(255,255,255,.10) 55%,
+    transparent 70%);
+  transform: translateX(-120%) rotate(3deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.rl-overlay.open .rl-card-inner::before {
+  animation: rlSheen 1.4s ease-out .15s 1;
+}
+@keyframes rlSheen {
+  to { transform: translateX(60%) rotate(3deg); }
+}
+
+/* static top highlight — subtle permanent specular edge, like light hitting glass */
+.rl-card-inner::after {
+  content: '';
+  position: absolute; top: 0; left: 8%; right: 8%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  pointer-events: none;
+}
+
+.rl-card-inner > * { position: relative; z-index: 2; }
+
+.rl-icon {
+  width: 60px; height: 60px; margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  background: radial-gradient(circle at 30% 30%, rgba(165,10,20,.55), rgba(165,10,20,.12) 70%);
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 0 0 6px rgba(165,10,20,.06), inset 0 1px 1px rgba(255,255,255,.15);
+  animation: rlPulse 2.4s ease-in-out infinite;
+}
+@keyframes rlPulse {
+  0%, 100% { box-shadow: 0 0 0 6px rgba(165,10,20,.06), inset 0 1px 1px rgba(255,255,255,.15); }
+  50%      { box-shadow: 0 0 0 10px rgba(165,10,20,.1), inset 0 1px 1px rgba(255,255,255,.15); }
+}
+
+.rl-title {
+  font-size: 17px; font-weight: 700; color: #fff;
+  letter-spacing: .2px; margin-bottom: 8px;
+}
+.rl-desc {
+  font-size: 12.5px; color: var(--ts); line-height: 1.65;
+  margin-bottom: 22px; padding: 0 4px;
+}
+
+.rl-timer-wrap {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px; padding: 14px 16px 16px;
+  margin-bottom: 22px;
+}
+.rl-timer-label {
+  font-size: 9.5px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--tm); margin-bottom: 6px;
+}
+.rl-timer-value {
+  font-size: 26px; font-weight: 700; color: #fff;
+  font-variant-numeric: tabular-nums; letter-spacing: .5px;
+  margin-bottom: 10px;
+}
+.rl-progress-track {
+  height: 4px; border-radius: 4px; overflow: hidden;
+  background: rgba(255,255,255,.08);
+}
+.rl-progress-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent), #ff4d5e);
+  width: 100%;
+  transition: width 1s linear;
+}
+
+.rl-continue-btn {
+  width: 100%; border: none; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #7c0710);
+  color: #fff; font-family: 'Inter',sans-serif; font-size: 13.5px; font-weight: 600;
+  padding: 12px 16px; cursor: pointer; letter-spacing: .2px;
+  box-shadow: 0 8px 20px -6px rgba(165,10,20,.55), inset 0 1px 0 rgba(255,255,255,.12);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.rl-continue-btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 10px 26px -6px rgba(165,10,20,.65), inset 0 1px 0 rgba(255,255,255,.14); }
+.rl-continue-btn:active { transform: translateY(0); }
+
+
 .section-divider {
   display: flex;
   align-items: center;
@@ -891,20 +1032,21 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 
 <div class="toast" id="toast"></div>
 
-<!-- RATE LIMIT MODAL — only shown when the GitHub API rate limit is actually hit -->
-<div class="modal-overlay" id="rateLimitOverlay">
-  <div class="modal" style="width:420px;">
-    <div class="modal-body" style="padding:26px 24px 24px;">
-      <div class="modal-title" style="display:flex;align-items:center;gap:8px;">⏳ GitHub API Limit Reached</div>
-      <div class="modal-desc" id="rateLimitDesc" style="margin-bottom:14px;">
-        Hit GitHub's API rate limit, so live project data can't be fetched right now. Showing cached project info instead — this will keep working, links included.
+<!-- RATE LIMIT MODAL — dark glass mirror UI, only shown when the GitHub API rate limit is actually hit -->
+<div class="rl-overlay" id="rateLimitOverlay">
+  <div class="rl-card">
+    <div class="rl-card-inner">
+      <div class="rl-icon">⏳</div>
+      <div class="rl-title">GitHub API Limit Reached</div>
+      <div class="rl-desc" id="rateLimitDesc">
+        Live project data can't be fetched right now — you're viewing cached project info instead. Everything still works, links included.
       </div>
-      <div class="modal-meta" style="margin-bottom:18px;">
-        <span>🔄 Resets in <strong id="rateLimitCountdown" style="color:#fff;">—</strong></span>
+      <div class="rl-timer-wrap">
+        <div class="rl-timer-label">Resets in</div>
+        <div class="rl-timer-value" id="rateLimitCountdown">—</div>
+        <div class="rl-progress-track"><div class="rl-progress-fill" id="rateLimitProgress"></div></div>
       </div>
-      <div class="modal-actions">
-        <button class="btn-red" id="rateLimitContinueBtn" onclick="closeRateLimitModal()">Continue</button>
-      </div>
+      <button class="rl-continue-btn" id="rateLimitContinueBtn" onclick="closeRateLimitModal()">Continue</button>
     </div>
   </div>
 </div>
@@ -1455,22 +1597,28 @@ function formatCountdown(ms) {
 // while running on cached/fallback data, then flips to a "refresh now"
 // hint once the GitHub rate limit window has reset.
 let _rateLimitInterval = null;
+let _rateLimitWindowStart = null; // when we first learned about the limit, for the progress bar
 function startRateLimitCountdown() {
   clearInterval(_rateLimitInterval);
   if (!RATE_LIMIT_RESET_AT) return;
+  if (!_rateLimitWindowStart) _rateLimitWindowStart = Date.now();
+  const totalWindow = Math.max(RATE_LIMIT_RESET_AT - _rateLimitWindowStart, 1000);
   const label = document.getElementById('repoCount');
   const modalTimer = document.getElementById('rateLimitCountdown');
+  const modalProgress = document.getElementById('rateLimitProgress');
   const baseText = `${ALL_REPOS.length} repos (cached)`;
   const tick = () => {
     const remaining = RATE_LIMIT_RESET_AT - Date.now();
     if (remaining <= 0) {
       label.textContent = `${baseText} · live data available — refresh to update`;
-      if (modalTimer) modalTimer.textContent = 'now — you can refresh';
+      if (modalTimer) modalTimer.textContent = 'Ready to refresh';
+      if (modalProgress) modalProgress.style.width = '0%';
       clearInterval(_rateLimitInterval);
       return;
     }
     label.textContent = `${baseText} · resets in ${formatCountdown(remaining)}`;
     if (modalTimer) modalTimer.textContent = formatCountdown(remaining);
+    if (modalProgress) modalProgress.style.width = `${Math.max(0, Math.min(100, (remaining / totalWindow) * 100))}%`;
   };
   tick();
   _rateLimitInterval = setInterval(tick, 1000);
