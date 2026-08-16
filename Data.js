@@ -155,4 +155,5 @@ const REPO_OVERRIDES = {
 "InboxIQ": { img: "imgs/haketons/HackerRank-aug26/InboxIQ.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://inbox-iq-hack.vercel.app/", source: "https://github.com/Yashhh710/InboxIQ", docs: { certificate: "imgs/haketons/HackerRank-aug26/hakerrank.gif", ppt: "imgs/haketons/HackerRank-aug26/ppt.pdf", report: "imgs/haketons/HackerRank-aug26/Report.pdf" } },
 "volt": { img: "imgs/volt.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/volt/", source: "https://github.com/Yashhh710/volt" },
 "BonfireNights": { img: "imgs/BonfireNights.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/BonfireNights/", source: "https://github.com/Yashhh710/BonfireNights" },
+"backend-learning-journey": { img: "imgs/backend-learning-journey.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/backend-learning-journey" },
 };
