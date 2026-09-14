@@ -1036,10 +1036,10 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
         <div class="modal-docs-dropdown" id="modalDocsDropdown" style="display:none;">
           <button class="btn-outline" id="modalDocsBtn" onclick="toggleDocsMenu(event)">📄 Documents ▾</button>
           <div class="docs-menu" id="docsMenu">
-            <button onclick="openDocFile('certificate')">🎓 Certificate</button>
-            <button onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
-            <button onclick="openDocFile('report')">📃 Report</button>
-            <button onclick="openDocFile('video')">🎬 Video</button>
+            <button id="docBtn-certificate" onclick="openDocFile('certificate')">🎓 Certificate</button>
+            <button id="docBtn-ppt" onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
+            <button id="docBtn-report" onclick="openDocFile('report')">📃 Report</button>
+            <button id="docBtn-video" onclick="openDocFile('video')">🎬 Video</button>
           </div>
         </div>
         <button class="btn-outline" onclick="closeModal()">Close</button>
@@ -1551,10 +1551,19 @@ function openModal(r) {
   }
   document.getElementById('modalCodeBtn').onclick = () => openLink(r.url);
 
-  // Documents dropdown (Certificate / PPT / Report) — hackathon projects only
+  // Documents dropdown (Certificate / PPT / Report / Video) — hackathon projects only,
+  // and only show a button for a doc type if that file was actually added
   currentModalDocs = r.docs || {};
   const isHackathon = (r.category || []).includes('hackathons');
-  document.getElementById('modalDocsDropdown').style.display = isHackathon ? '' : 'none';
+  const docTypes = ['certificate', 'ppt', 'report', 'video'];
+  let hasAnyDoc = false;
+  docTypes.forEach(type => {
+    const btn = document.getElementById('docBtn-' + type);
+    const fileAdded = !!(currentModalDocs[type] && currentModalDocs[type].trim());
+    if (btn) btn.style.display = fileAdded ? '' : 'none';
+    if (fileAdded) hasAnyDoc = true;
+  });
+  document.getElementById('modalDocsDropdown').style.display = (isHackathon && hasAnyDoc) ? '' : 'none';
   document.getElementById('docsMenu').classList.remove('open');
 
   document.getElementById('modalOverlay').classList.add('open');
