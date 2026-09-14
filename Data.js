@@ -7,7 +7,7 @@ const PROFILE = {
   socials: {
     githubMain:  "https://github.com/yashtambade56-ux",
     githubAlt:   "https://github.com/Yashhh710",
-    linkedin:    "https://www.linkedin.com/in/yash-tambade-173508379",
+    linkedin:    "https://www.linkedin.com/in/yash-tambade/",
     instagram:   "https://www.instagram.com/yashhh.710",
     email:       "yashtambade56@gmail.com"
   },
