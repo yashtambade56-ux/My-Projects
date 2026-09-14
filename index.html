@@ -763,111 +763,6 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
 .rl-continue-btn:active { transform: translateY(0); }
 
 
-/* PROJECT STATISTICS */
-.stats-section {
-  padding: 34px 20px 6px;
-}
-
-.stats-header {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.stats-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--tp);
-  letter-spacing: .3px;
-}
-
-.stats-subtitle {
-  margin-top: 6px;
-  font-size: 12.5px;
-  color: var(--ts);
-  line-height: 1.6;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.stat-card {
-  position: relative;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0) 60%),
-    var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 24px 16px;
-  text-align: center;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  opacity: 0;
-  transform: translateY(14px);
-  animation: statCardIn .5s cubic-bezier(.22,1,.36,1) forwards;
-  transition: transform .4s cubic-bezier(.22,1,.36,1),
-              border-color .3s ease,
-              background .3s ease,
-              box-shadow .4s cubic-bezier(.22,1,.36,1);
-}
-.stat-card:nth-child(1) { animation-delay: .05s; }
-.stat-card:nth-child(2) { animation-delay: .12s; }
-.stat-card:nth-child(3) { animation-delay: .19s; }
-.stat-card:nth-child(4) { animation-delay: .26s; }
-
-@keyframes statCardIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.stat-card:hover {
-  transform: translate3d(0,-6px,0);
-  border-color: var(--accent);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0) 60%),
-    var(--bg-hover);
-  box-shadow: 0 16px 32px rgba(0,0,0,.4), 0 4px 18px rgba(165,10,20,.22);
-}
-
-.stat-icon {
-  font-size: 26px;
-  display: inline-block;
-  margin-bottom: 10px;
-  transition: transform .4s cubic-bezier(.22,1,.36,1);
-}
-.stat-card:hover .stat-icon {
-  transform: scale(1.15) rotate(-4deg);
-}
-
-.stat-number {
-  font-size: 30px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: .3px;
-  margin-bottom: 4px;
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-label {
-  font-size: 11.5px;
-  color: var(--ts);
-  text-transform: uppercase;
-  letter-spacing: .6px;
-}
-
-@media (max-width: 900px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
-  .stats-title { font-size: 18px; }
-}
-
 .section-divider {
   display: flex;
   align-items: center;
@@ -1024,35 +919,6 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
       <div class="hero-dots" id="heroDots"></div>
     </div>
 
-    <section class="stats-section" id="statsSection" aria-label="Project Statistics">
-      <div class="stats-header">
-        <h2 class="stats-title">Project Statistics</h2>
-        <p class="stats-subtitle">A quick overview of my development journey and work.</p>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">🚀</div>
-          <div class="stat-number" data-count="60" data-suffix="+">0+</div>
-          <div class="stat-label">Projects Built</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">💻</div>
-          <div class="stat-number" data-count="60" data-suffix="+">0+</div>
-          <div class="stat-label">GitHub Repositories</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🛠️</div>
-          <div class="stat-number" data-count="15" data-suffix="+">0+</div>
-          <div class="stat-label">Technologies Explored</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🏆</div>
-          <div class="stat-number" data-count="3" data-suffix="+">0+</div>
-          <div class="stat-label">Hackathons &amp; Competitions</div>
-        </div>
-      </div>
-    </section>
-
     <div class="content-area">
       <div class="section-header">
         <div class="section-title" id="sectionTitle">All Projects</div>
@@ -1170,10 +1036,10 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
         <div class="modal-docs-dropdown" id="modalDocsDropdown" style="display:none;">
           <button class="btn-outline" id="modalDocsBtn" onclick="toggleDocsMenu(event)">📄 Documents ▾</button>
           <div class="docs-menu" id="docsMenu">
-            <button id="docBtn-certificate" onclick="openDocFile('certificate')">🎓 Certificate</button>
-            <button id="docBtn-ppt" onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
-            <button id="docBtn-report" onclick="openDocFile('report')">📃 Report</button>
-            <button id="docBtn-video" onclick="openDocFile('video')">🎬 Video</button>
+            <button onclick="openDocFile('certificate')">🎓 Certificate</button>
+            <button onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
+            <button onclick="openDocFile('report')">📃 Report</button>
+            <button onclick="openDocFile('video')">🎬 Video</button>
           </div>
         </div>
         <button class="btn-outline" onclick="closeModal()">Close</button>
@@ -1685,19 +1551,10 @@ function openModal(r) {
   }
   document.getElementById('modalCodeBtn').onclick = () => openLink(r.url);
 
-  // Documents dropdown (Certificate / PPT / Report / Video) — hackathon projects only,
-  // and only show a button for a doc type if that file was actually added
+  // Documents dropdown (Certificate / PPT / Report) — hackathon projects only
   currentModalDocs = r.docs || {};
   const isHackathon = (r.category || []).includes('hackathons');
-  const docTypes = ['certificate', 'ppt', 'report', 'video'];
-  let hasAnyDoc = false;
-  docTypes.forEach(type => {
-    const btn = document.getElementById('docBtn-' + type);
-    const fileAdded = !!(currentModalDocs[type] && currentModalDocs[type].trim());
-    if (btn) btn.style.display = fileAdded ? '' : 'none';
-    if (fileAdded) hasAnyDoc = true;
-  });
-  document.getElementById('modalDocsDropdown').style.display = (isHackathon && hasAnyDoc) ? '' : 'none';
+  document.getElementById('modalDocsDropdown').style.display = isHackathon ? '' : 'none';
   document.getElementById('docsMenu').classList.remove('open');
 
   document.getElementById('modalOverlay').classList.add('open');
@@ -1885,44 +1742,6 @@ loadAllRepos().catch(err => {
       </div>`;
   }
 });
-
-/* ─── PROJECT STATISTICS: count-up animation on scroll into view ─── */
-function initProjectStatsCounters() {
-  const counters = document.querySelectorAll('.stat-number[data-count]');
-  if (!counters.length || !('IntersectionObserver' in window)) return;
-
-  const animateCounter = (el) => {
-    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 1300;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      el.textContent = Math.round(target * eased) + suffix;
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent = target + suffix;
-      }
-    };
-    requestAnimationFrame(tick);
-  };
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.35 });
-
-  counters.forEach((el) => observer.observe(el));
-}
-
-initProjectStatsCounters();
 
 </script>
 </body>
