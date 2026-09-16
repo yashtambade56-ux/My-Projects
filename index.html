@@ -1035,12 +1035,7 @@ img.loaded ~ .img-skeleton { opacity: 0; visibility: hidden; }
         <button class="btn-outline" id="modalCodeBtn">⌨️ Source Code</button>
         <div class="modal-docs-dropdown" id="modalDocsDropdown" style="display:none;">
           <button class="btn-outline" id="modalDocsBtn" onclick="toggleDocsMenu(event)">📄 Documents ▾</button>
-          <div class="docs-menu" id="docsMenu">
-            <button onclick="openDocFile('certificate')">🎓 Certificate</button>
-            <button onclick="openDocFile('ppt')">📊 Presentation (PPT)</button>
-            <button onclick="openDocFile('report')">📃 Report</button>
-            <button onclick="openDocFile('video')">🎬 Video</button>
-          </div>
+          <div class="docs-menu" id="docsMenu"></div>
         </div>
         <button class="btn-outline" onclick="closeModal()">Close</button>
       </div>
@@ -1516,6 +1511,28 @@ function cardClick(el, repoId) {
 }
 
 /* ─── MODAL ─── */
+// The set of possible document types shown in the "Documents" dropdown.
+// Only entries that actually exist in a repo's `docs` object (from
+// REPO_OVERRIDES in data.js) are rendered as buttons — empty/missing
+// ones are skipped entirely instead of showing an empty-state toast.
+const DOC_TYPES = [
+  { key: 'certificate', label: '🎓 Certificate' },
+  { key: 'ppt',         label: '📊 Presentation (PPT)' },
+  { key: 'report',      label: '📃 Report' },
+  { key: 'video',       label: '🎬 Video' },
+];
+
+// Renders only the buttons for doc types that have a real (non-empty)
+// URL set in `docs`. Returns how many buttons were rendered so callers
+// can decide whether to show the "Documents" button at all.
+function renderDocsMenu(docs) {
+  const available = DOC_TYPES.filter(d => docs && docs[d.key]);
+  document.getElementById('docsMenu').innerHTML = available
+    .map(d => `<button onclick="openDocFile('${d.key}')">${d.label}</button>`)
+    .join('');
+  return available.length;
+}
+
 function openModal(r) {
   if (!r) return;
   const ac = langColor(r.lang);
@@ -1551,10 +1568,13 @@ function openModal(r) {
   }
   document.getElementById('modalCodeBtn').onclick = () => openLink(r.url);
 
-  // Documents dropdown (Certificate / PPT / Report) — hackathon projects only
+  // Documents dropdown (Certificate / PPT / Report / Video) — hackathon
+  // projects only, and only shown at all when at least one doc file
+  // has actually been added for this repo.
   currentModalDocs = r.docs || {};
   const isHackathon = (r.category || []).includes('hackathons');
-  document.getElementById('modalDocsDropdown').style.display = isHackathon ? '' : 'none';
+  const availableDocsCount = renderDocsMenu(currentModalDocs);
+  document.getElementById('modalDocsDropdown').style.display = (isHackathon && availableDocsCount > 0) ? '' : 'none';
   document.getElementById('docsMenu').classList.remove('open');
 
   document.getElementById('modalOverlay').classList.add('open');
@@ -1562,7 +1582,7 @@ function openModal(r) {
 
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
 
-/* ─── DOCS DROPDOWN (Certificate / PPT / Report) ─── */
+/* ─── DOCS DROPDOWN (Certificate / PPT / Report / Video) ─── */
 let currentModalDocs = null;
 
 function toggleDocsMenu(e) {
@@ -1573,6 +1593,8 @@ function toggleDocsMenu(e) {
 function openDocFile(type) {
   const url = currentModalDocs && currentModalDocs[type];
   if (!url) {
+    // Shouldn't normally happen since the menu only renders buttons for
+    // types that exist, but kept as a safety net.
     showToast('No file added yet for this item.');
     document.getElementById('docsMenu').classList.remove('open');
     return;
