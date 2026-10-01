@@ -160,4 +160,5 @@ const REPO_OVERRIDES = {
 "BorderSight-AI": { img: "imgs/haketons/Internal-SIH-Hackathon-2026/BorderSight-AI.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://bordersight-ai.vercel.app/", source: "https://github.com/Yashhh710/BorderSight-AI", docs: { ppt: "imgs/haketons/Internal-SIH-Hackathon-2026/ppt.pdf"} },
 "BuyOrWait": { img: "imgs/haketons/HackerRank-sep26/BuyOrWait.png", category: ["hackathons","web","main"], account: "Yashhh710", live: "https://yashhh710.github.io/BuyOrWait/frontend/index.html?", source: "https://github.com/Yashhh710/BuyOrWait", docs: { certificate: "imgs/haketons/HackerRank-sep26/certificate.png"} },
 "animora-animal-world": { img: "imgs/animora-animal-world.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/animora-animal-world/", source: "https://github.com/Yashhh710/animora-animal-world" },
+"telecom-bss-javafx": { img: "imgs/telecom-bss-javafx.png", category: ["App","main"], account: "Yashhh710", live: "https://yashhh710.github.io/telecom-bss-javafx/WEB-DEMO.html", source: "https://github.com/Yashhh710/telecom-bss-javafx" },
 };
