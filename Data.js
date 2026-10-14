@@ -164,4 +164,5 @@ const REPO_OVERRIDES = {
 "linguahub": { img: "imgs/linguahub.png", category: ["web","main"], account: "Yashhh710", live: "https://linguahub-xi.vercel.app/", source: "https://github.com/Yashhh710/linguahub" },
 "restock-inventory-management": { img: "imgs/restock-inventory-management.png", category: ["web","main"], account: "Yashhh710", live: "https://yashhh710.github.io/restock-inventory-management/", source: "https://github.com/Yashhh710/restock-inventory-management" },
 "coppervale-network-outage-diagnostics": { img: "imgs/coppervale-network-outage-diagnostics.png", category: ["other","main"], account: "Yashhh710", source: "https://github.com/Yashhh710/coppervale-network-outage-diagnostics" },
+"voidrax": { img: "imgs/voidrax.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/voidrax/", source: "https://voidrax.vercel.app/" },
 };
