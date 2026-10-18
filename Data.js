@@ -15,19 +15,22 @@ const PROFILE = {
   githubUsers: ["yashtambade56-ux", "Yashhh710"]
 };
 
+
 const SKILLS = [
-  { label: "HTML5",            pct: 95 },
-  { label: "CSS3",             pct: 90 },
-  { label: "JavaScript",       pct: 85 },
-  { label: "React.js",         pct: 75 },
-  { label: "Python",           pct: 80 },
-  { label: "C++",              pct: 70 },
-  { label: "Git & GitHub",     pct: 85 },
-  { label: "UI/UX Design",     pct: 75 },
-  { label: "Drawing",          pct: 85 },
-  { label: "Sketching",        pct: 90 },
-  { label: "Problem Solving",  pct: 80 }
+  { label: "Web Development",          pct: 70 },
+  { label: "UI/UX Design",             pct: 75 },
+  { label: "Creative Thinking",       pct: 85 },
+  { label: "Problem Solving",         pct: 70 },
+  { label: "AI-Assisted Development", pct: 80 },
+  { label: "Prompt Engineering",      pct: 75 },
+  { label: "Visual Design",           pct: 75 },
+  { label: "Idea Generation",         pct: 85 },
+  { label: "Research & Analysis",     pct: 70 },
+  { label: "Adaptability",            pct: 80 },
+  { label: "Project Development",     pct: 70 },
+  { label: "Debugging & Testing",     pct: 60 }
 ];
+
 
 
 const CATEGORIES = [
