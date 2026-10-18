@@ -164,6 +164,6 @@ const REPO_OVERRIDES = {
 "linguahub": { img: "imgs/linguahub.png", category: ["web","main"], account: "Yashhh710", live: "https://linguahub-xi.vercel.app/", source: "https://github.com/Yashhh710/linguahub" },
 "restock-inventory-management": { img: "imgs/restock-inventory-management.png", category: ["web","main"], account: "Yashhh710", live: "https://yashhh710.github.io/restock-inventory-management/", source: "https://github.com/Yashhh710/restock-inventory-management" },
 "coppervale-network-outage-diagnostics": { img: "imgs/coppervale-network-outage-diagnostics.png", category: ["other","main"], account: "Yashhh710", source: "https://github.com/Yashhh710/coppervale-network-outage-diagnostics" },
-"Voidrex": { img: "imgs/voidrax.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/voidrax/", source: "https://voidrax.vercel.app/" },
 "Book-and-Byte": { img: "imgs/Book-and-Byte.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/Book-and-Byte/", source: "https://yashhh710.github.io/Book-and-Byte/" },
+"game-library-ui": { img: "imgs/game-library-ui.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/game-library-ui/", source: "https://yashhh710.github.io/game-library-ui/" },
 };
