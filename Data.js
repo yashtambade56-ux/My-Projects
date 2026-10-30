@@ -132,7 +132,7 @@ const REPO_OVERRIDES = {
 "my-skiills": { img: "imgs/my-skiills.png", category: ["web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/my-skiills/", source: "https://github.com/Yashhh710/my-skiills" },
 "home-port-v1": { img: "imgs/home-port-v1.png", category: ["web","timepass"], account: "Yashhh710", live: "https://home-port-v1.vercel.app/", source: "https://github.com/Yashhh710/home-port-v1" },
 "My-Portfolio-Hub": { img: "imgs/My-Portfolio-Hub.png", category: ["web","timepass"], account: "Yashhh710", live: "https://my-portfolio-hub-ten.vercel.app/", source: "https://github.com/Yashhh710/My-Portfolio-Hub" },
-"Data-Structures-and-Algorithm-Cpp": { img: "imgs/Data-Structures-and-Algorithm-1-Cpp.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Data-Structures-and-Algorithm-1-Cpp" },
+"Data-Structures-and-Algorithm-Cpp": { img: "imgs/Data-Structures-and-Algorithm-Cpp.png", category: ["Class Work","main"], account: "yashtambade56-ux", source: "https://github.com/yashtambade56-ux/Data-Structures-and-Algorithm-Cpp" },
 "map-port-v1": { img: "imgs/map-port-v1.png", category: ["portfolios","web","timepass"], account: "Yashhh710", live: "https://map-port-v1.vercel.app/", source: "https://github.com/Yashhh710/map-port-v1" },
 "Portfolio_v1": { img: "imgs/Portfolio_v1.png", category: ["portfolios","web","timepass"], account: "Yashhh710", live: "https://yashhh710.github.io/Portfolio_v1/", source: "https://github.com/Yashhh710/Portfolio_v1" },
 "Portfolio-v4": { img: "imgs/Portfolio-v4.png", category: ["portfolios","web","timepass"], account: "Yashhh710", live: "https://portfolio-v4-three-mauve.vercel.app/", source: "https://github.com/Yashhh710/Portfolio-v4" },
