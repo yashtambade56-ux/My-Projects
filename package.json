@@ -1,0 +1,23 @@
+{
+  "name": "primary",
+  "version": "1.0.0",
+  "description": "live projects - https://myprojects-yash.vercel.app/",
+  "main": "Data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashtambade56-ux/My-Projects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashtambade56-ux/My-Projects/issues"
+  },
+  "homepage": "https://github.com/yashtambade56-ux/My-Projects#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
