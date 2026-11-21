@@ -169,4 +169,5 @@ const REPO_OVERRIDES = {
 "coppervale-network-outage-diagnostics": { img: "imgs/coppervale-network-outage-diagnostics.png", category: ["other","main"], account: "Yashhh710", source: "https://github.com/Yashhh710/coppervale-network-outage-diagnostics" },
 "Book-and-Byte": { img: "imgs/Book-and-Byte.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/Book-and-Byte/", source: "https://yashhh710.github.io/Book-and-Byte/" },
 "game-library-ui": { img: "imgs/game-library-ui.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/game-library-ui/", source: "https://yashhh710.github.io/game-library-ui/" },
+"bank-queue-system": { img: "imgs/bank-queue-system.png", category: ["web","main"], account: "Yashhh710", live: "https://bank-queue-system-9ig3.onrender.com/dashboard", source: "https://github.com/Yashhh710/bank-queue-system" },
 };
