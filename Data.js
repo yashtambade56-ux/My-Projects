@@ -170,5 +170,5 @@ const REPO_OVERRIDES = {
 "Book-and-Byte": { img: "imgs/Book-and-Byte.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/Book-and-Byte/", source: "https://yashhh710.github.io/Book-and-Byte/" },
 "game-library-ui": { img: "imgs/game-library-ui.png", category: ["web","timepass"], account: "Yashhh710", live: "https://github.com/Yashhh710/game-library-ui/", source: "https://yashhh710.github.io/game-library-ui/" },
 "bank-queue-system": { img: "imgs/bank-queue-system.png", category: ["web","main"], account: "Yashhh710", live: "https://bank-queue-system-9ig3.onrender.com/dashboard", source: "https://github.com/Yashhh710/bank-queue-system" },
-"CRAV-Food-Ordering-System": { img: "imgs/CRAV-Food-Ordering-System.png", category: ["web","main"], account: "Yashhh710", live: "https://crav-food-ordering.web.app/", source: "https://github.com/Yashhh710/CRAV-Food-Ordering-System", docs: {report: "https://yashhh710.github.io/CRAV-Food-Ordering-System/documents/index.html" } },
+"CRAV-Food-Ordering-System": { img: "imgs/CRAV-Food-Ordering-System.png", category: ["web","main"], account: "Yashhh710", live: "https://crav-food-ordering.web.app/", source: "https://github.com/Yashhh710/CRAV-Food-Ordering-System", docs: { report: "https://yashhh710.github.io/CRAV-Food-Ordering-System/documents/index.html" } },
 };
